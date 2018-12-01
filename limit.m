@@ -2,7 +2,7 @@ function sigma=limit(sigma1,e,x)
 
 constant_sim;
 
-sigma0=10*pi/180;
+sigma0=20*pi/180;
 
 r=x(2);
 v=sqrt(2*(1/r-e));
@@ -24,7 +24,7 @@ D=q.*Cd.*S/m*Re;
 drhodr=rho*(-Re/hs);
 drdv_q=-6.3*q_max^2/(k_q^2*drhodr*v^7.3);
 drdv=v.*sin(gamma)./(-D-sin(gamma)./r.^2);
-eps0=20*(drdv-drdv_q);
+eps0=0*(drdv-drdv_q);
 
 sigmaqdot=acos(k_q.^2.*(1-v.^2+eps0).*v.^4.3./(Kl*q_max^2));
 sigmaq=acos(Vc^2*(1-v.^2)./(2*Kl*1.5e4));

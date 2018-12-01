@@ -1,4 +1,4 @@
-function sigma0=calcu_sigma0
+function calcu_sigma0
 
 constant_sim;
 H0=121900;
@@ -13,26 +13,25 @@ vf=Vf/Vc;
 e0=1/r0-v0^2/2;
 ef=1/rf-vf^2/2;
 
-espan=linspace(e0,ef,2000);
-s0=55/57.3;
+espan=linspace(e0,ef,5000);
 gamma0=-0.5*pi/180;
-tau0=0;
-y0=[s0;r0;gamma0;tau0];
+y0=[r0;gamma0];
 
 sigma=zeros(2000,1);
 qdot=zeros(2000,1);
-sigma(1)=10/180*pi;
-sigma(2)=15/180*pi;
+sigma(1)=30/180*pi;
+sigma(2)=35/180*pi;
 t=1;
 for i=1:1999
-    sigma1=sigma(i);
-    [ee,yy]=rk1(@dxde2,espan,y0,sigma1);
+    assignin('base','sig0_a',sigma(i)*180/pi);
+    options=odeset('events',@stop_conditions_1);
+    [ee,yy]=ode45(@dxde2,[e0 ef],y0,options);
     ef=ee(end);
-    rf=yy(end,2);
+    rf=yy(end,1);
     rho=rho0.*exp(-(rf*Re-Re)./hs);
     v=sqrt(2*(1./rf-ef));
     qdot(i)=k_q*sqrt(rho)*v^3.15;
-    qdot_delta=qdot(i)-q_max+10000;
+    qdot_delta=qdot(i)-q_max+20000;
     
     if abs(qdot_delta)<0.001
         break
@@ -43,6 +42,5 @@ for i=1:1999
     end
     t=t+1;
 end
-sigma0=180*sigma(t)/pi;
 
 end

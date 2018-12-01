@@ -1,23 +1,10 @@
-function xdot=dxde2(e,x,sigma)
+function xdot=dxde2(e,x)
 constant_sim;
-
-% H0=121900;
-% Hf=30480;
-% V0=7600;
-% Vf=910;
-% r0=(Re+H0)/Re;
-% rf=(Re+Hf)/Re;
-% v0=V0/Vc;
-% vf=Vf/Vc;
-% 
-% e0=1/r0-v0^2/2;
-% ef=1/rf-vf^2/2;
+sigma=evalin('base','sig0_a');
+sigma=sigma/180*pi;
 alpha0=45/180*pi;
-% ef=evalin('base','ef');
-% e0=evalin('base','e0');
-s=x(1);
-r=x(2);
-gamma=x(3);
+r=x(1);
+gamma=x(2);
 V=sqrt(2*(1./r-e));
 
 ma=V*Vc/340;
@@ -35,7 +22,5 @@ D=q.*Cd.*S/m*Re;
 
 rdot=sin(gamma)./D;
 gammadot=1./(D.*V.^2).*(L.*cos(sigma)+(V.^2./r-1./r.^2).*cos(gamma));
-sdot=-cos(gamma)./(r.*D);
-taudot=1./(D.*V);
-xdot=[sdot;rdot;gammadot;taudot];
+xdot=[rdot;gammadot];
 end

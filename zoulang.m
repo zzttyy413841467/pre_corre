@@ -41,7 +41,7 @@ figure(2);
 
 plot(V,sigma_max1,'--');
 hold on
-plot(V,10*ones(1,length(V)));
+plot(V,20*ones(1,length(V)));
 grid on
 ylim([0 90]);
 ylabel('sigma/degree');

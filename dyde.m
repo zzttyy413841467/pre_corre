@@ -30,8 +30,7 @@ D=q.*Cd.*S/m*Re;
 rdot=sin(gamma)./D;
 gammadot=1./(D.*V.^2).*(L.*cos(sigma)+(V.^2./r-1./r.^2).*cos(gamma));
 sdot=-cos(gamma)./(r.*D);
-taudot=1./(D.*V);
-ydot=[sdot;rdot;gammadot;taudot];
+ydot=[sdot;rdot;gammadot];
 
 
 end

@@ -1,8 +1,8 @@
 function [value,isterminal,direction]=stop_conditions(e,x)
 
 constant_sim;
-r=x(2);
-gamma=x(3);
+r=x(1);
+gamma=x(4);
 v=sqrt(2*(1./r-e));
 alpha0=45/180*pi;
 ma=v*Vc/340;
@@ -27,7 +27,6 @@ drhodr=-Re/hs*rho1;
 % drdvq=-6.3*q_max^2/(k_q^2*drhodr*v^7.3);
 drdvq=-6.3*rho1/(drhodr*v);
 delta=0.01;
-
 
 value=abs(drdv-drdvq)-delta;
 isterminal=1;

@@ -4,9 +4,8 @@ constant_sim;
 sigma=evalin('base','sig0')/180*pi;
 alpha0=45/180*pi;
 
-s=x(1);
-r=x(2);
-gamma=x(3);
+r=x(1);
+gamma=x(4);
 V=sqrt(2*(1./r-e));
 
 ma=V*Vc/340;
@@ -24,14 +23,13 @@ D=q.*Cd.*S/m*Re;
 
 rdot=sin(gamma)./D;
 gammadot=1./(D.*V.^2).*(L.*cos(sigma)+(V.^2./r-1./r.^2).*cos(gamma));
-sdot=-cos(gamma)./(r.*D);
 taudot=1./(D.*V);
-theta=x(4);
-phi=x(5);
-psi=x(6);
+theta=x(2);
+phi=x(3);
+psi=x(5);
 thetadot=cos(gamma).*sin(psi)./(r.*D.*cos(phi));
 phidot=cos(gamma).*cos(psi)./(r.*D);
 psidot=1./(D.*V).*(L.*sin(sigma)./V./cos(gamma)+V./r.*cos(gamma).*sin(psi).*tan(phi));
 
-xdot=[sdot;rdot;gammadot;taudot;thetadot;phidot;psidot];
+xdot=[rdot;thetadot;phidot;gammadot;psidot;taudot];
 end

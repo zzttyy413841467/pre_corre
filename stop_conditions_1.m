@@ -1,4 +1,4 @@
-function result=trans(e,x)
+function [value,isterminal,direction]=stop_conditions_1(e,x)
 
 constant_sim;
 r=x(1);
@@ -27,11 +27,8 @@ drhodr=-Re/hs*rho1;
 % drdvq=-6.3*q_max^2/(k_q^2*drhodr*v^7.3);
 drdvq=-6.3*rho1/(drhodr*v);
 delta=0.01;
-if abs(drdv-drdvq)<delta
-    result=1;
-else
-    result=0;
-end
-    
 
+value=abs(drdv-drdvq)-delta;
+isterminal=1;
+direction=-1;
 end
