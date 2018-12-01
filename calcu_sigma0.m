@@ -14,7 +14,7 @@ e0=1/r0-v0^2/2;
 ef=1/rf-vf^2/2;
 
 espan=linspace(e0,ef,2000);
-s0=68.5/57.3;
+s0=55/57.3;
 gamma0=-0.5*pi/180;
 tau0=0;
 y0=[s0;r0;gamma0;tau0];
@@ -33,6 +33,7 @@ for i=1:1999
     v=sqrt(2*(1./rf-ef));
     qdot(i)=k_q*sqrt(rho)*v^3.15;
     qdot_delta=qdot(i)-q_max+10000;
+    
     if abs(qdot_delta)<0.001
         break
     end

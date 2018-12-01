@@ -30,13 +30,6 @@ legend({'热流边界','动压边界','过载边界','平衡滑翔边界'},'Location','NorthWest',
 
 
 v=V/Vc;
-% rho=rho0.*exp(-hqdot./hs);
-% q=1/2*rho.*v.^2;
-% L=q.*Cl.*S/m*Re;
-% D=q.*Cd.*S/m*Re;
-% drhodr=rho.*(-Re./hs);
-% drdv_q=-6.3*q_max^2./(k_q^2.*drhodr.*v.^7.3);
-% eps0=0.5*(-drdv_q);
 Kl=Re*Cl*S/2/m;
 
 sigmaqdot=180/pi*acos(k_q.^2.*(1-v.^2).*v.^4.3./(Kl*q_max^2));
@@ -48,17 +41,10 @@ figure(2);
 
 plot(V,sigma_max1,'--');
 hold on
-% plot(V,sigmaq,'-.');
-% hold on
-% plot(V,sigman1,':');
-% hold on
 plot(V,10*ones(1,length(V)));
 grid on
 ylim([0 90]);
 ylabel('sigma/degree');
 xlabel('速度/(m/s)');
-% legend({'热流边界','动压边界','过载边界','平衡滑翔边界'},'Location','NorthWest','FontSize',10);
-
-% L=1/2*rho0*
-% sigma_QEGC_max=acos((1-v.^2)./)
+legend({'热流边界','动压边界','过载边界','平衡滑翔边界'},'Location','NorthWest','FontSize',10);
 
