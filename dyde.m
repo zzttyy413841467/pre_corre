@@ -1,14 +1,22 @@
 function ydot=dyde(e,y)
 
 constant_sim;
-
 alpha0=45/180*pi;
+
+global e_m
+global sigmam
 sigma0=evalin('base','sigma0');
 sigmaf=evalin('base','sigmaf');
 e0=evalin('base','e0');
 ef=evalin('base','ef');
-sigma=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,y);
-% sigma=sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0)
+
+
+if(e<=e_m)
+    sigma=limit(sigma0+(sigmam-sigma0)./(e_m-e0).*(e-e0),e,y);
+else
+    sigma=limit(sigmam+(sigmaf-sigmam)./(ef-e_m).*(e-e_m),e,y);
+end
+
 s=y(1);
 r=y(2);
 gamma=y(3);
