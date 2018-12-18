@@ -41,9 +41,11 @@ figure(2);
 
 plot(V,sigma_max1,'--');
 hold on
+plot(V,-sigma_max1,'--');
 plot(V,20*ones(1,length(V)));
+plot(V,-20*ones(1,length(V)));
 grid on
-ylim([0 90]);
+ylim([-90 90]);
 ylabel('sigma/degree');
 xlabel('速度/(m/s)');
 legend({'热流边界','动压边界','过载边界','平衡滑翔边界'},'Location','NorthWest','FontSize',10);

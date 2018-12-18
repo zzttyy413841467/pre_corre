@@ -15,6 +15,7 @@ sigma0=sigma_0(1);
 sf=zeros(n,1);
 thetaf=evalin('base','thetaf');
 phif=evalin('base','phif');
+sigma(1)=evalin('base','sig0')/180*pi;
 for e=espan(1:end-1)
     if i==2
         sigma0=sigma0+10/57.3;
@@ -32,11 +33,13 @@ for e=espan(1:end-1)
     sf(i)=xx1(end,1);
     sigma_x=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,xx0);
     
-    sigma(i)=sigma_x;
-    k1=dxde1(e,x);
-    k2=dxde1(e+h/2,x+h*k1/2);
-    k3=dxde1(e+h/2,x+h*k2/2);
-    k4=dxde1(e+h,x+h*k3);
+    if i>=2
+       sigma(i)=sigma_x*sign_decide(sign(sigma(i-1)),e,x); 
+    end
+    k1=dxde1(e,x,sigma(i));
+    k2=dxde1(e+h/2,x+h*k1/2,sigma(i));
+    k3=dxde1(e+h/2,x+h*k2/2,sigma(i));
+    k4=dxde1(e+h,x+h*k3,sigma(i));
     x=x+(h/6)*(k1+2*k2+2*k3+k4);
     i=i+1;
     x1(i,:)=x;

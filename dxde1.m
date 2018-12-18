@@ -1,13 +1,13 @@
-function xdot=dxde1(e,x)
+function xdot=dxde1(e,x,sigma)
 constant_sim;
 
 alpha0=45/180*pi;
-sigmaf=evalin('base','sigmaf');
-sigma0=evalin('base','sigma0');
-ef=evalin('base','ef');
-e0=evalin('base','e0');
-sigma=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,x);
-% % sigma=sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0)
+% sigmaf=evalin('base','sigmaf');
+% sigma0=evalin('base','sigma0');
+% ef=evalin('base','ef');
+% e0=evalin('base','e0');
+% sigma=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,x);
+
 r=x(1);
 gamma=x(4);
 V=sqrt(2*(1./r-e));
