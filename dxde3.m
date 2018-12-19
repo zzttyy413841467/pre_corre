@@ -2,6 +2,9 @@ function xdot=dxde3(e,x)
 constant_sim;
 
 sigma=evalin('base','sig0')/180*pi;
+sigma=sign_decide(sign(sigma),e,x)*abs(sigma);
+assignin('base','sig0',sigma*180/pi);
+
 alpha0=45/180*pi;
 
 r=x(1);
@@ -9,7 +12,7 @@ gamma=x(4);
 V=sqrt(2*(1./r-e));
 
 ma=V*Vc/340;
-alpha=alpha0.*(ma>=10)+((45-0.612*(ma-10).^2)/180*pi).*(ma<10);
+alpha=alpha0.*(ma>=15)+((45-0.21*(ma-15).^2)/180*pi).*(ma<15);
 
 Cl = cl0+cl1*alpha+cl2.*alpha.^2;
 Cd = cd0+cd1*Cl+cd2.*Cl.^2;

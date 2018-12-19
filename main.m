@@ -2,11 +2,11 @@ clear;
 constant_sim;
 calcu_sigma0;
 
-thetaf=65*pi/180;
-phif=5*pi/180;
+thetaf=55*pi/180;
+phif=20*pi/180;
 
 global nfz;
-nfz=struct('theta',{25/180*pi 45/180*pi},'phi',{4/180*pi 0.8/180*pi},'radius',{2/180*pi 2.5/180*pi});
+nfz=struct('theta',{25/180*pi 45/180*pi},'phi',{8.5/180*pi 20/180*pi},'radius',{2.3/180*pi 3.8/180*pi});
 
 ee0=1/((Re+121900)/Re)-(7630/Vc)^2/2;
 eef=1/((Re+26500)/Re)-(900/Vc)^2/2;
@@ -15,7 +15,7 @@ r0=(Re+121900)/Re;
 theta0=0;
 phi0=0;
 gamma0=-0.5*pi/180;
-psi0=88/180*pi;
+psi0=65/180*pi;
 tau0=0;
 % psi_t=atan(sin(thetaf-theta0)/(cos(phi0)*tan(phif)-sin(phi0)*cos(thetaf-theta0)));
 if (phif-phi0>0)
@@ -66,14 +66,14 @@ zoulang;
 
 figure(3);
 hold on
-theta=0:1/50*pi:2*pi;
+theta=0:1/50*pi:2*pi;           
 x1=nfz(1).theta+nfz(1).radius.*cos(theta);
 y1=nfz(1).phi+nfz(1).radius.*sin(theta);
 x2=nfz(2).theta+nfz(2).radius.*cos(theta);
 y2=nfz(2).phi+nfz(2).radius.*sin(theta);
 plot(x1*180/pi,y1*180/pi);
 plot(x2*180/pi,y2*180/pi);
-plot(180/pi*yy(:,2),180/pi*yy(:,3))
+plot(180/pi*yy(:,2),180/pi*yy(:,3));
 grid on
 
 % openfig('nfz.fig');

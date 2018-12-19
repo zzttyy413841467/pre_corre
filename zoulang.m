@@ -2,7 +2,7 @@ constant_sim;
 V=(850:50:8000)';
 alpha0=45/180*pi;
 ma=V/340;
-alpha=alpha0.*(ma>=10)+((45-0.612*(ma-10).^2)/180*pi).*(ma<10);
+alpha=alpha0.*(ma>=15)+((45-0.21*(ma-15).^2)/180*pi).*(ma<15);
 Cl = cl0+cl1*alpha+cl2.*alpha.^2;
 Cd = cd0+cd1*Cl+cd2.*Cl.^2;
 
