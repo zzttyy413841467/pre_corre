@@ -28,10 +28,12 @@ for e=espan(1:end-1)
         sigma_0(i)=sigma0;
         assignin('base','sigma0',sigma0);
     end
-    xx0=[acos(cos(x(3))*cos(phif)*cos(x(2)-thetaf)+sin(x(3))*sin(phif)),x(1),x(4)];
-    [ee1,xx1]=ode45(@dyde,linspace(e,ef,200),xx0);
-    sf(i)=xx1(end,1);
+    xx0=[0,x(1),x(4)];
     sigma_x=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,xx0);
+    assignin('base','sigma_x',sigma_x);
+    [ee1,xx1]=ode45(@dyde,[e,ef],x(1:5));
+    sf(i)=acos(cos(xx1(end,3))*cos(phif)*cos(xx1(end,2)-thetaf)+sin(xx1(end,3))*sin(phif));
+    
     
     if i>=2
        sigma(i)=sigma_x*sign_decide(sign(sigma(i-1)),e,x); 

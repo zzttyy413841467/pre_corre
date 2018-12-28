@@ -31,7 +31,7 @@ for i=1:1999
     rho=rho0.*exp(-(rf*Re-Re)./hs);
     v=sqrt(2*(1./rf-ef));
     qdot(i)=k_q*sqrt(rho)*v^3.15;
-    qdot_delta=qdot(i)-q_max;
+    qdot_delta=qdot(i)-q_max+20000;
     
     if abs(qdot_delta)<0.001
         break

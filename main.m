@@ -2,11 +2,11 @@ clear;
 constant_sim;
 calcu_sigma0;
 
-thetaf=55*pi/180;
-phif=20*pi/180;
+thetaf=65*pi/180;
+phif=25*pi/180;
 
 global nfz;
-nfz=struct('theta',{25/180*pi 45/180*pi},'phi',{8.5/180*pi 20/180*pi},'radius',{2.3/180*pi 3.8/180*pi});
+nfz=struct('theta',{35/180*pi 50/180*pi},'phi',{10/180*pi 26/180*pi},'radius',{5/180*pi 5/180*pi});
 
 ee0=1/((Re+121900)/Re)-(7630/Vc)^2/2;
 eef=1/((Re+26500)/Re)-(900/Vc)^2/2;
