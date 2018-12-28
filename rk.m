@@ -1,4 +1,5 @@
 function [e,x1,sigma]=rk(dxde1,espan,x0)
+
 n=length(espan);
 ef=espan(end);
 e0=espan(1);
@@ -27,7 +28,6 @@ for e=espan(1:end-1)
         sigma_0(i)=sigma0;
         assignin('base','sigma0',sigma0);
     end
-    
     xx0=[acos(cos(x(3))*cos(phif)*cos(x(2)-thetaf)+sin(x(3))*sin(phif)),x(1),x(4)];
     [ee1,xx1]=ode45(@dyde,linspace(e,ef,200),xx0);
     sf(i)=xx1(end,1);

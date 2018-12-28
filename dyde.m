@@ -9,9 +9,8 @@ e0=evalin('base','e0');
 ef=evalin('base','ef');
 sigma=limit(sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0),e,y);
 % sigma=sigma0+(sigmaf-sigma0)./(ef-e0).*(e-e0)
-s=y(1);
-r=y(2);
-gamma=y(3);
+r=y(1);
+gamma=y(2);
 V=sqrt(2*(1./r-e));
 
 ma=V*Vc/340;
@@ -29,8 +28,7 @@ D=q.*Cd.*S/m*Re;
 
 rdot=sin(gamma)./D;
 gammadot=1./(D.*V.^2).*(L.*cos(sigma)+(V.^2./r-1./r.^2).*cos(gamma));
-sdot=-cos(gamma)./(r.*D);
-ydot=[sdot;rdot;gammadot];
+ydot=[rdot;gammadot];
 
 
 end
